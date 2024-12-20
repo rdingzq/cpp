@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Chart Application</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>CPP Benefit Comparison</h1>
+    <div id="chart"></div>
+
+    <form method="GET" action="/">
+        <label for="appreciation_rate">Annual Appreciation Rate:</label>
+        <input type="number" id="appreciation_rate" name="appreciation_rate" min="0" Value="{{appreciation_rate}}" size="6" step="0.01"> % <br>
+        <label for="cpi">CPI:</label>
+        <input type="number" id="cpi" name="cpi" min="0" Value="{{cpi}}" size="6" step="0.01"> % <br>
+        <label for="life_expectancy">Life expectancy:</label>
+        <input type="number" id="life_expectancy" name="life_expectancy" min="0" Value="{{life_expectancy}}" size="6"> <br>
+
+        <button type="submit">Update Chart</button>
+    </form>
+    <script> 
+        var graphJSON = {{ graphJSON | safe }}; 
+        Plotly.newPlot('chart', graphJSON.data, graphJSON.layout); 
+    </script>    
+</body>
+</html>

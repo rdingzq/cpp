@@ -1,0 +1,6 @@
+plotly.express
+kaleido
+pandas
+odfpy
+flask
+plotly
