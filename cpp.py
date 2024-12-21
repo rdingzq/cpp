@@ -102,7 +102,7 @@ def benefit(month, appreciation): # time to take benefit after the number of mon
     for i in range (month, (life-60)*12):           
         val_at_end = round(monthly_benefit*(1+appreciation/12)**((life-60)*12-i),2)
         total = round(val_at_end + total,2)
-    print ("monthly payment: " + str(monthly_benefit) + " accumulated in " + str((life-60)*12-month) + " months. end value is: " + str(total))
+    # print ("monthly payment: " + str(monthly_benefit) + " accumulated in " + str((life-60)*12-month) + " months. end value is: " + str(total))
     return total
 
 
