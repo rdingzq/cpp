@@ -32,7 +32,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      name: $(poolName)
 
     steps:
     - bash: |
