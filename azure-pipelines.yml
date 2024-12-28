@@ -14,10 +14,15 @@ variables:
   functionAppName: 'deerfoxcpp'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  #vmImageName: 'ubuntu-latest'
 
   # Working Directory
   workingDirectory: '/'
+
+  # Agent VM image name
+  #agentImage: 'ubuntu-latest'
+  poolName: local
+
 
 stages:
 - stage: Build
