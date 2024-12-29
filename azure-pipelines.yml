@@ -44,9 +44,9 @@ stages:
       displayName: 'Build extensions'
 
     - task: UsePythonVersion@0
-      displayName: 'Use Python 3.11.11'
-      # inputs:
-      #   versionSpec: '3.11'
+      displayName: 'Use local installed Python '
+      inputs:
+        disableDownloadFromRegistry: true
 
     - bash: |
         python -m venv antenv
