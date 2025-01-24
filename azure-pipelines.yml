@@ -45,6 +45,9 @@ stages:
 
     - task: UsePythonVersion@0
       displayName: 'Use Python 3.x'
+      inputs:
+        versionSpec: '3.12.3'
+#        disableDownloadFromRegistry: true
 
     - bash: |
         python -m venv antenv
