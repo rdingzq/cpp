@@ -40,7 +40,7 @@ stages:
         then
             dotnet build extensions.csproj --runtime ubuntu.22.04-x64 --output ./bin 
         fi
-        echo "github token is $(TOKEN_VALUE)"
+        echo "github token is $TOKEN_VALUE"
       env:
         TOKEN_VALUE: $(githubtoken)
       workingDirectory: $(workingDirectory)
