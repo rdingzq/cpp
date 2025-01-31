@@ -50,7 +50,7 @@ stages:
       displayName: 'Use Python 3.x'
       inputs:
         versionSpec: '3.12.3'
-        githubToken: $(githubtoken)
+        githubToken: $(TOKEN_VALUE)
 #        disableDownloadFromRegistry: true
 
     - bash: |
