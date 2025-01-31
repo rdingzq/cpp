@@ -48,6 +48,8 @@ stages:
 
     - task: UsePythonVersion@0
       displayName: 'Use Python 3.x'
+      env:
+        TOKEN_VALUE: $(githubtoken)
       inputs:
         versionSpec: '3.12.3'
         githubToken: $(TOKEN_VALUE)
