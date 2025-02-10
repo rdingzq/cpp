@@ -63,6 +63,14 @@ stages:
       workingDirectory: $(workingDirectory)
       displayName: 'Install application dependencies'
 
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Agent.TempDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)\AgentTempDirectory'
+      displayName: 'Copy Agent.TempDirectory to drop'
+#      condition: eq(variables['system.debug'], 'true')
+
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
