@@ -55,6 +55,14 @@ stages:
 #        githubToken: $(TOKEN_VALUE)
         disableDownloadFromRegistry: true
 
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Agent.TempDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)\AgentTempDirectory'
+      displayName: 'Copy Agent.TempDirectory to drop'
+#      condition: eq(variables['system.debug'], 'true')
+
     - bash: |
         ls "$PWD"
         python -m venv antenv
