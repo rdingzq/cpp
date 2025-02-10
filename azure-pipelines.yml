@@ -51,9 +51,9 @@ stages:
       env:
         TOKEN_VALUE: $(githubtoken)
       inputs:
-        versionSpec: '3.12.3'
-        githubToken: $(TOKEN_VALUE)
-#        disableDownloadFromRegistry: true
+ #       versionSpec: '3.12.3'
+#        githubToken: $(TOKEN_VALUE)
+        disableDownloadFromRegistry: true
 
     - bash: |
         python -m venv antenv
