@@ -17,7 +17,7 @@ variables:
   #vmImageName: 'ubuntu-latest'
 
   # Working Directory
-  workingDirectory: '/'
+  workingDirectory: '$(Agent.BuildDirectory)'
 
   # Agent VM image name
   #agentImage: 'ubuntu-latest'
