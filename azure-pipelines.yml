@@ -7,6 +7,8 @@ trigger:
 - master
 
 variables:
+  system.debug: true
+
   # Azure Resource Manager connection created during pipeline creation
   azureSubscription: 'ee063447-126a-4231-a067-4f5cee2df4e1'
 
@@ -40,7 +42,6 @@ stages:
         then
             dotnet build extensions.csproj --runtime ubuntu.22.04-x64 --output ./bin 
         fi
-        echo "github token is $TOKEN_VALUE"
       env:
         TOKEN_VALUE: $(githubtoken)
       workingDirectory: $(workingDirectory)
@@ -55,12 +56,12 @@ stages:
 #        githubToken: $(TOKEN_VALUE)
         disableDownloadFromRegistry: true
 
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(Agent.TempDirectory)'
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)\AgentTempDirectory'
-      displayName: 'Copy Agent.TempDirectory to drop'
+#     - task: CopyFiles@2
+#       inputs:
+#         SourceFolder: '$(Agent.TempDirectory)'
+#         Contents: '**'
+#         TargetFolder: '$(Build.ArtifactStagingDirectory)/AgentTempDirectory'
+#       displayName: 'Copy Agent.TempDirectory to drop'
 #      condition: eq(variables['system.debug'], 'true')
 
     - bash: |
@@ -68,7 +69,7 @@ stages:
         python -m venv antenv
         source antenv/bin/activate
         python -m pip install --upgrade pip
-        pip install -r requirements.txt --target="./.python_packages/lib/site-packages"
+#        pip install -r requirements.txt --target="./.python_packages/lib/site-packages"
       workingDirectory: $(workingDirectory)
       displayName: 'Install application dependencies'
 
