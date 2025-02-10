@@ -56,21 +56,13 @@ stages:
         disableDownloadFromRegistry: true
 
     - bash: |
-        echo "$PWD"
+        ls "$PWD"
         python -m venv antenv
         source antenv/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt --target="./.python_packages/lib/site-packages"
       workingDirectory: $(workingDirectory)
       displayName: 'Install application dependencies'
-
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(Agent.TempDirectory)'
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)\AgentTempDirectory'
-      displayName: 'Copy Agent.TempDirectory to drop'
-#      condition: eq(variables['system.debug'], 'true')
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
