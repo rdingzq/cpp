@@ -12,8 +12,8 @@ variables:
   # Azure Resource Manager connection created during pipeline creation
   azureSubscription: 'ee063447-126a-4231-a067-4f5cee2df4e1'
 
-  # Function app name
-  functionAppName: 'deerfoxcpp'
+  # Web app name
+  webAppName: 'deerfoxapp'
 
   # Agent VM image name
   #vmImageName: 'ubuntu-latest'
@@ -99,10 +99,12 @@ stages:
         deploy:
 
           steps:
-          - task: AzureFunctionApp@1
-            displayName: 'Azure functions app deploy'
+          - task: AzureRmWebAppDeployment@4
+            displayName: 'Azure App Service deploy'
             inputs:
+              ConnectionType: 'AzureRM'
               azureSubscription: '$(azureSubscription)'
-              appType: functionAppLinux
-              appName: $(functionAppName)
-              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+              appType: 'webAppLinux'
+              WebAppName: $(webAppName)
+              packageForLinux: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+#              RuntimeStack: 'PYTHON|3.11'
