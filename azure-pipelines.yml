@@ -72,14 +72,10 @@ stages:
       workingDirectory: $(Build.SourcesDirectory)
       displayName: 'Install application dependencies'
 
-    - task: ArchiveFiles@2
-      displayName: 'Archive files'
-      inputs:
-        rootFolderOrFile: '$(Build.SourcesDirectory)'
-        includeRootFolder: false
-        archiveType: zip
-        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-        replaceExistingArchive: true
+    - script: |
+        zip -r $(Build.BuildId).zip $(Build.SourcesDirectory) -x "$(Build.SourcesDirectory)/.git/*"
+      displayName: 'Create Archive'
+      workingDirectory: $(Build.SourcesDirectory)
 
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
