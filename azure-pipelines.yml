@@ -74,7 +74,7 @@ stages:
 
     - script: |
         echo "$(Build.ArtifactStagingDirectory)"
-        zip -j -r $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip $(Build.SourcesDirectory) -x "$(Build.SourcesDirectory)/.git/*"
+        zip -r $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip $(Build.SourcesDirectory) -x "$(Build.SourcesDirectory)/.git/*"
       displayName: 'Create Archive'
       workingDirectory: $(Build.SourcesDirectory)
 
