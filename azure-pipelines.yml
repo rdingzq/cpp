@@ -65,13 +65,11 @@ stages:
 #      condition: eq(variables['system.debug'], 'true')
 
     - bash: |
-        ls "$PWD"
-        ls "$workingDirectory"
         python -m venv antenv
         source antenv/bin/activate
         python -m pip install --upgrade pip
-#        pip install -r requirements.txt --target="./.python_packages/lib/site-packages"
-      workingDirectory: $(workingDirectory)
+        pip install -r requirements.txt --target="./.python_packages/lib/site-packages"
+      workingDirectory: $(Build.SourcesDirectory)
       displayName: 'Install application dependencies'
 
     - task: ArchiveFiles@2
