@@ -73,7 +73,8 @@ stages:
       displayName: 'Install application dependencies'
 
     - script: |
-        zip -r -j $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip $(Build.SourcesDirectory) -x "$(Build.SourcesDirectory)/.git/*"
+        echo "$(Build.ArtifactStagingDirectory)"
+        zip -j -r $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip $(Build.SourcesDirectory) -x "$(Build.SourcesDirectory)/.git/*"
       displayName: 'Create Archive'
       workingDirectory: $(Build.SourcesDirectory)
 
