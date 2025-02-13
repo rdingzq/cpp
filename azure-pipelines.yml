@@ -105,4 +105,5 @@ stages:
               appType: 'webAppLinux'
               WebAppName: $(webAppName)
               packageForLinux: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+              RemoveAdditionalFilesFlag: true
 #              RuntimeStack: 'PYTHON|3.11'
